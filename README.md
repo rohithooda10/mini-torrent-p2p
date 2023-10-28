@@ -16,6 +16,15 @@ A Peer-to-Peer (P2P) Group Based File Sharing System that enables users to share
 
 This project implements a P2P file-sharing system with group-based access control, user authentication, and parallel downloading of file pieces from multiple peers.
 
+## Snapshots
+<img width="1222" alt="Upload" src="https://github.com/rohithooda10/mini-torrent-p2p/assets/109358642/ef1ceac0-71e7-43f1-8a5a-aa9fcf4ce6f4">
+<img width="598" alt="Logs" src="https://github.com/rohithooda10/mini-torrent-p2p/assets/109358642/b4f60d5d-bae5-4642-a2df-33b8b9627b62">
+<img width="1222" alt="Error" src="https://github.com/rohithooda10/mini-torrent-p2p/assets/109358642/23218f2c-72b7-4a17-8bb4-dffe41730d59">
+<img width="1217" alt="Download" src="https://github.com/rohithooda10/mini-torrent-p2p/assets/109358642/0fb62a98-a177-4ce8-87a1-fbe632b06949">
+<img width="270" alt="ClientLogs" src="https://github.com/rohithooda10/mini-torrent-p2p/assets/109358642/6ccac8aa-27b7-4097-b468-fb2545a85014">
+<img width="600" alt="Authentication" src="https://github.com/rohithooda10/mini-torrent-p2p/assets/109358642/1f85faea-b391-471e-88b0-788318ed4482">
+
+
 ## Architecture Overview
 
 The system consists of the following entities:
