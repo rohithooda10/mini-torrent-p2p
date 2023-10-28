@@ -99,38 +99,41 @@ The system consists of the following entities:
 2. For compiling the `client.cpp` file, include flags for OpenSSL. For example, for macOS users:
    ```shell
    g++ client.cpp -o client -lssl -lcrypto -L/opt/homebrew/opt/openssl@3/lib -I/opt/homebrew/opt/openssl@3/include
+   ```
 
+3. To run the client file, use a command like this:
+   ```shell
+   ./client 127.0.0.1:9999 tracker_info.txt
 
-To run the client file, use a command like this:
+   # Here, 127.0.0.1 is the IP and 9999 is the port number.
+   ```
 
-shell
-Copy code
-./client 127.0.0.1:9999 tracker_info.txt
-Here, 127.0.0.1 is the IP and 9999 is the port number.
-
-To compile the tracker.cpp file, use the following command:
+4. To compile the tracker.cpp file, use the following command:
 
 ```shell
    g++ tracker.cpp -o tracker
+   ```
 
-To run the tracker, use the command:
+5. To run the tracker, use the command:
    ```shell
    ./tracker tracker_info.txt 1
-Here, 1 is the tracker number.
 
-tracker_info.txt should contain all the tracker information.
+   # Here, 1 is the tracker number.
+   ```
 
-The code will create extra folders and files in the working directory.
+6. tracker_info.txt should contain all the tracker information.
 
-Make sure OpenSSL is installed before running.
+7. The code will create extra folders and files in the working directory.
 
-Requirements
+8. Make sure OpenSSL is installed before running.
+
+## Requirements
 C++ compiler (g++)
 OpenSSL library
 
-Contributing
+## Contributing
 If you want to contribute to this project, feel free to submit issues or pull requests on the GitHub repository.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
