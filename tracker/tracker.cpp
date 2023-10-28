@@ -959,7 +959,7 @@ void* handleEverythingElseThread(void* sfd)
 	socketfd = *((int*)sfd);
 	while(1)
 	{
-		//make threads here so tracekr can handle many
+		//make threads here so traker can handle many
 
 		int newSocketfd = accept(socketfd,(struct sockaddr*)&clientAddr,&clientAddrLen);
 		if(newSocketfd<0) 
@@ -971,7 +971,6 @@ void* handleEverythingElseThread(void* sfd)
 			pthread_create(&threads[thread_count++],NULL,handleCommunication,&newSocketfd);
 			
 		}
-		// break;
 	}
 }
 

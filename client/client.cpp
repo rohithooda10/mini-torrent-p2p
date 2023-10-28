@@ -112,42 +112,6 @@ string getShaHash(string filename)
 
 }
 
-// string getShaHash(string filename)
-// {
-// 	string ans="";
-// 	char buffer[bufferSize];
-// 	int len;
-// 	EVP_MD_CTX *mdctx;  
-//     const EVP_MD *md;  
-//     unsigned char md_value[EVP_MAX_MD_SIZE];  
-//     unsigned int md_len;  
-  
-//     md = EVP_sha1();  
-//     mdctx = EVP_MD_CTX_create();  
-//     EVP_DigestInit_ex(mdctx, md, NULL);  
-
-//     FILE* inputFile = fopen((filename).c_str(),"rb");
-//     while((len = fread(buffer,1,bufferSize, inputFile)) > 0)
-// 	{
-// 		EVP_DigestUpdate(mdctx, buffer, len); 
-// 		bzero(buffer,bufferSize);
-		
-// 	}
-	
-// 	fclose(inputFile);
-     
-  
-//     EVP_DigestFinal_ex(mdctx, md_value, &md_len);  
-//     EVP_MD_CTX_destroy(mdctx);  
-//     // printf("Digest is: ");  
-//     for(int i = 0; i < md_len-1; i++){  
-//         // ans+=to_string((int)md_value[i]);  
-//         sprintf(buffer + (i << 3), "%08x", md_value[i]);
-//     }
-//     ans=buffer;
-//     EVP_cleanup(); 
-// 	return ans;
-// }
 
 int processInputCommand(string command)
 {
@@ -251,7 +215,6 @@ bool fileExists(string filename)
 string sendDataToTracker(string command)
 {
 	command+=" "+myId+" "+myIp+" "+myPort;
-	// cout<<"RAW:"<<command<<endl;
 	int commandType = processInputCommand(command);
 	if(commandType==2) //upload
 	{
@@ -263,11 +226,9 @@ string sendDataToTracker(string command)
 			return "File not available";
 		}
 		long long size = getFilesize(commandArgs[1]);
-		// logIntoFile("UPLOADING FILE SIZE:"+commandArgs[1]+to_string(size));
 		long long numberOfChunks = ceil((size*1.0)/(512*1024));
 		command+=" "+to_string(numberOfChunks);
 		command+=" "+getShaHash(myId+"/Uploads/"+commandArgs[1]);
-		// logIntoFile(getShaHash(myId+"/Uploads/"+commandArgs[1]));
 		files[commandArgs[1]]=getBitMap(numberOfChunks);
 	}
 	else if(commandType==3)
@@ -276,10 +237,9 @@ string sendDataToTracker(string command)
 		string newCommand = commandArgs[1]+" "+commandArgs[2]+" "+commandArgs[3]+" "+commandArgs[5]+" "+commandArgs[6]+" "+commandArgs[7]+" 1 "+commandArgs[4];
 		command=newCommand;
 	}
-	//writing in command list fo sync
+	//writing in command list for sync
 	ofstream commandFile("commands.txt",ios_base::app);
 	commandFile<<command+"\n";
-	// cout<<command<<endl;
 	
 	int anothersocketfd = socket(AF_INET,SOCK_STREAM,0);
 	
@@ -506,13 +466,6 @@ void* takeCareOfDownload(void* peer)
 		ip.push_back(ipAndPort[0]);
 		
 	}
-	// cout<<"**********************:"<<endl;
-	// for(int i=0;i<ip.size();i++)
-	// {
-
-	// 	cout<<"IP:"<<ip[i]<<endl<<"PORT:"<<port[i]<<endl;
-	// }
-	// cout<<"**********************:"<<endl;
 	int anothersocketfd;
 	vector<string> bitmaps;
 	vector<string> chunks;
@@ -695,14 +648,6 @@ void* handleCommands(void* sfd)
 		else if(commandType==2 && trackerReply=="File not available")
 		{
 			cout<<trackerReply<<endl;
-		}
-		else if(command=="sup")
-		{
-			for(auto i:files)
-			{
-				cout<< i.first << i.second << "\n";
-			}
-			cout<<"sup"<<endl;
 		}
 		else if(command=="exit")
 		{
