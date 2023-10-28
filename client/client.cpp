@@ -639,9 +639,9 @@ void* handleCommands(void* sfd)
 		{
 			if(isdigit(trackerReply[0]))
 			{
-				string threadInput = "TrackerReply "+trackerReply;
+				string* threadInput = new string("TrackerReply " + trackerReply);
 				pthread_t newThread;
-				pthread_create(&newThread,NULL,takeCareOfDownload,&threadInput);
+				pthread_create(&newThread,NULL,takeCareOfDownload,threadInput);
 				threadsRecv.push_back(newThread);
 			}
 		}

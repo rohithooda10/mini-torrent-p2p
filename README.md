@@ -82,7 +82,7 @@ The system consists of the following entities:
     - Command: `upload_file <file_path> <group_id>`
 
 12. **Download File:**
-    - Command: `download_file <group_id> <file_name> <destination_path>`
+    - Command: `download <group_id> <file_name> <destination_path>`
 
 13. **Logout:**
     - Command: `logout`
